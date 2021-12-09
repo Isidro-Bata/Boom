@@ -12,6 +12,8 @@ import Controller.ctrFuncionario;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -85,12 +87,18 @@ public class Index extends JFrame implements ActionListener {
     JLabel settNome, settApelido, settIconPerfil, settAniversario, settTelefone, settEmail;
     JLabel settSenha, settSenhaAnt, settSenhaConf, settSubTituloH, settSubTituloM, settSubTituloF,settSubTituloP;
     Font settSub, settNormal; 
-    JScrollPane sp;
     JTextField settTextNome, settTextApelido, settTextAniversario, settTextTelefone, settTextEmail;
     JPasswordField settTextSenha, settTextSenhaAnt, settTextSenhaConf;
     JSeparator settM, settCU, settCD;
     JFileChooser settImagemPefil;
     
+    //Registro
+    JPanel subPainel;
+    JButton btSemanal, btDiario, btMensal, btAnual;
+    JTable tabela;
+    JScrollPane sp;
+    String [] nomeColunas;
+    Object [][] info;
     
     Cliente cl;
     Funcionario func;
@@ -126,7 +134,6 @@ public class Index extends JFrame implements ActionListener {
         //TextFields
         pesq=new JTextField("");//Para Pesquisar algo
         pesq.setBackground(Color.WHITE);
-        
         pesq.setBounds(250,25,250,50);
         
         //Buttons
@@ -207,6 +214,7 @@ public class Index extends JFrame implements ActionListener {
         menuReg.setBorder(null);
         menuReg.setFont(ft);
         menuReg.setBounds(50,390,200,50);
+        menuReg.addActionListener(this);
         
         menuSett=new JButton("Settings");
         menuSett.setName("set");
@@ -457,7 +465,6 @@ public class Index extends JFrame implements ActionListener {
         bordaS.setBackground(new java.awt.Color(58,70,80));
         bordaS.setBounds(0,0,600,50);
         searchClient.add(bordaS);
-        
         
         JLabel lblS=new JLabel("Pesquisar");
         lblS.setFont(ft);
@@ -736,8 +743,6 @@ public class Index extends JFrame implements ActionListener {
         entryFuncio.setBounds(370,290,130,20);
         entryFuncio.setEditable(false);
         
-
-        
         Font ft3=new Font("Courier",Font.PLAIN, 12);
         emp.add(txtEmp);
         emp.add(txtCli);
@@ -756,6 +761,180 @@ public class Index extends JFrame implements ActionListener {
         emp.add(separador2);
         
         central.add(emp);
+    }
+    
+    public void painelRegistro(){
+        central.removeAll();
+        central.revalidate();
+        central.repaint();
+        
+        setTitle("Registo");
+        lblTit.setText("Relatorio");
+        
+        infoLevelIntern = new JPanel[8];
+        infoLevel = new JPanel[4];
+        infoLabel = new JLabel[8];
+        
+        for(int i =  0; i < infoLevel.length; i++)
+            infoLevel[i] = new JPanel();
+        
+        for(int i =  0; i < infoLabel.length; i++){
+            infoLabel[i] = new JLabel();
+            infoLevelIntern[i] = new JPanel();
+        }
+        
+        //Fonte
+        Font infoFtU = new Font("Courier",Font.BOLD, 24);
+        Font infoFtL = new Font("Courier",Font.ROMAN_BASELINE, 16);
+        
+        //Label Capital
+        infoLabel[0].setText("7B"); //BD info. nr de clientes
+        infoLabel[0].setForeground (Color.white);
+        infoLabel[0].setFont(infoFtU);
+        infoLabel[1].setText("Capital(MT)");
+        infoLabel[1].setForeground (Color.white);
+        infoLabel[1].setFont(infoFtL);
+        
+        //Label Emprestimo
+        infoLabel[2].setText("2B"); //BD info. nr de emprestimos
+        infoLabel[2].setForeground (Color.white);
+        infoLabel[2].setFont(infoFtU);
+        infoLabel[3].setText("Emprestimo(MT)");
+        infoLabel[3].setForeground (Color.white);
+        infoLabel[3].setFont(infoFtL);
+        
+        //Label Liquidado
+        infoLabel[4].setText("3.5B"); //BD info. nr de liquidações
+        infoLabel[4].setForeground (Color.white);
+        infoLabel[4].setFont(infoFtU);
+        infoLabel[5].setText("Liquidado(MT)");
+        infoLabel[5].setForeground (Color.white);
+        infoLabel[5].setFont(infoFtL);
+        
+        //Label Estado
+        infoLabel[6].setText("1,8%");
+        infoLabel[6].setForeground (Color.white);
+        infoLabel[6].setFont(infoFtU);
+        infoLabel[7].setText("Estado: LUCRO");
+        infoLabel[7].setForeground (Color.white);
+        infoLabel[7].setFont(infoFtL);
+        
+        //Painel Capital
+        infoLevel[0].setBounds(50,30,200,90);
+        infoLevel[0].setBackground(new java.awt.Color(0,120,50));
+        infoLevel[0].setLayout(new GridLayout(2,1));
+        infoLevelIntern[0].setBackground(new java.awt.Color(0,120,50));
+        infoLevelIntern[1].setBackground(new java.awt.Color(0,120,50));
+        infoLevel[0].add(infoLevelIntern[0]);
+        infoLevel[0].add(infoLevelIntern[1]);
+        infoLevelIntern[0].add(infoLabel[0]);
+        infoLevelIntern[1].add(infoLabel[1]);
+        
+        //Painel Emprestimo
+        infoLevel[1].setBounds(300,30,200,90);
+        infoLevel[1].setBackground(new java.awt.Color(0,102,204));
+        infoLevel[1].setLayout(new GridLayout(2,1));
+        infoLevelIntern[2].setBackground(new java.awt.Color(0,120,204));
+        infoLevelIntern[3].setBackground(new java.awt.Color(0,120,204));
+        infoLevel[1].add(infoLevelIntern[2]);
+        infoLevel[1].add(infoLevelIntern[3]);
+        infoLevelIntern[2].add(infoLabel[2]);
+        infoLevelIntern[3].add(infoLabel[3]);
+        
+        //Painel Liquidado
+        infoLevel[2].setBounds(550,30,200,90);
+        infoLevel[2].setBackground(new java.awt.Color(178,102,255));
+        infoLevel[2].setLayout(new GridLayout(2,1));
+        infoLevelIntern[4].setBackground(new java.awt.Color(178,102,255));
+        infoLevelIntern[5].setBackground(new java.awt.Color(178,102,255));
+        infoLevel[2].add(infoLevelIntern[4]);
+        infoLevel[2].add(infoLevelIntern[5]);
+        infoLevelIntern[4].add(infoLabel[4]);
+        infoLevelIntern[5].add(infoLabel[5]);
+        
+        //Painel Estado
+        infoLevel[3].setBounds(800,30,200,90);
+        infoLevel[3].setBackground(new java.awt.Color(255,153,51));
+        infoLevel[3].setLayout(new GridLayout(2,1));
+        infoLevelIntern[6].setBackground(new java.awt.Color(255,153,51));
+        infoLevelIntern[7].setBackground(new java.awt.Color(255,153,51));
+        infoLevel[3].add(infoLevelIntern[6]);
+        infoLevel[3].add(infoLevelIntern[7]);
+        infoLevelIntern[6].add(infoLabel[6]);
+        infoLevelIntern[7].add(infoLabel[7]);
+        
+        //Sub-Painel Menu
+        subPainel = new JPanel();
+        subPainel.setBackground(new java.awt.Color(97,124,140));
+        subPainel.setBounds(0,150,1110,50);
+        
+        //Buttons
+        btSemanal = new JButton("Semanal");
+        btSemanal.setBorder(null);
+        btSemanal.setBounds(30,10,230,30);
+        btSemanal.setBackground(new java.awt.Color(58,70,80));
+        btSemanal.setForeground(Color.white);
+        btDiario = new JButton("Diario");
+        btDiario.setBorder(null);
+        btDiario.setBounds(295,10,230,30);
+        btDiario.setBackground(new java.awt.Color(58,70,80));
+        btDiario.setForeground(Color.white);
+        btMensal = new JButton("Mensal");
+        btMensal.setBorder(null);
+        btMensal.setBounds(555,10,230,30);
+        btMensal.setBackground(new java.awt.Color(58,70,80));
+        btMensal.setForeground(Color.white);
+        btAnual = new JButton("Anual");
+        btAnual.setBorder(null);
+        btAnual.setBounds(820,10,230,30);
+        btAnual.setBackground(new java.awt.Color(58,70,80));
+        btAnual.setForeground(Color.white);
+        
+        //Tabela
+        paneCircularHome = new JPanel();
+        paneCircularHome.setBounds(50,220,600,290);
+        paneCircularHome.setLayout(new BorderLayout());
+     
+        String [] nomeColunas = {"Nome", "Apelido", "Emprestimo", "Liquidado","Parcelamento", "Data"};
+        Object [][]info = {{"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "09/01/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "40,000.00", "10,000.00", "19/04/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "15/06/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "20/08/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "01/10/2022"},
+                          };
+        
+        tabela = new JTable(info, nomeColunas);
+        tabela.setFillsViewportHeight(true);
+        sp = new JScrollPane(tabela);
+        paneCircularHome.add(sp);
+        
+        
+        //Painel Grafico de barras
+        paneBarrasHome = new JPanel();
+        paneBarrasHome.setBounds(650,220,400,290);
+        paneBarrasHome.setLayout(new BorderLayout());
+        paneBarrasHome.setBackground(new java.awt.Color(147,147,147));
+        dadosGraficoBarra = new DefaultCategoryDataset();
+        dadosGraficoBarra.setValue(activo,"Activo", "Activo");
+        dadosGraficoBarra.setValue(liq,"Liquidado", "Liquidado");
+        
+         //Grafico de Barras
+        barrasHome = ChartFactory.createBarChart("Emprestimo", "", "Saldo", dadosGraficoBarra);
+        grfBarrasHome = new ChartPanel(barrasHome);
+        paneBarrasHome.add(grfBarrasHome, BorderLayout.CENTER);
+        
+        subPainel.setLayout(null);
+        subPainel.add(btDiario);
+        subPainel.add(btSemanal);
+        subPainel.add(btMensal);
+        subPainel.add(btAnual);
+        central.add(paneCircularHome);
+        central.add(paneBarrasHome);
+        central.add(subPainel);
+        central.add(infoLevel[0]);
+        central.add(infoLevel[1]);
+        central.add(infoLevel[2]);
+        central.add(infoLevel[3]);
     }
     
     public void painelConfiguracoes(){
@@ -884,7 +1063,6 @@ public class Index extends JFrame implements ActionListener {
         settCD.setBounds(650,10,2,190);
         settCD.setForeground(Color.black);
        
-        
         //central.add(sp);
         central.add(settM);
         central.add(settCU);
@@ -916,7 +1094,6 @@ public class Index extends JFrame implements ActionListener {
         //central.add(sp);
     }
     
-    
     public void readClientes(){ 
         ctrCliente ctrCli =new ctrCliente();
         Vector cle=ctrCli.listar();
@@ -939,8 +1116,127 @@ public class Index extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource()==menuIni)
+        if(ae.getSource()==menuIni){
+            menuIni.setBackground(Color.WHITE);
+            menuIni.setForeground(new java.awt.Color(58,70,80));
+            
+            menuCli.setBackground(new java.awt.Color(58,70,80));
+            menuCli.setForeground(Color.WHITE);
+            
+            menuFunc.setBackground(new java.awt.Color(58,70,80));
+            menuFunc.setForeground(Color.WHITE);
+            
+            menuEmp.setBackground(new java.awt.Color(58,70,80));
+            menuEmp.setForeground(Color.WHITE);
+            
+            menuSett.setBackground(new java.awt.Color(58,70,80));
+            menuSett.setForeground(Color.WHITE);
+            
+            menuReg.setBackground(new java.awt.Color(58,70,80));
+            menuReg.setForeground(Color.WHITE);
+            
             painelHome();
+        }
+        if(ae.getSource()==menuCli){
+            menuIni.setBackground(new java.awt.Color(58,70,80));
+            menuIni.setForeground(Color.WHITE);
+            
+            menuCli.setBackground(Color.WHITE);
+            menuCli.setForeground(new java.awt.Color(58,70,80));
+            
+            menuFunc.setBackground(new java.awt.Color(58,70,80));
+            menuFunc.setForeground(Color.WHITE);
+            
+            menuEmp.setBackground(new java.awt.Color(58,70,80));
+            menuEmp.setForeground(Color.WHITE);
+            
+            menuSett.setBackground(new java.awt.Color(58,70,80));
+            menuSett.setForeground(Color.WHITE);
+            
+            menuReg.setBackground(new java.awt.Color(58,70,80));
+            menuReg.setForeground(Color.WHITE);
+            painelClientes();
+        }
+        if(ae.getSource()==menuFunc){
+            menuIni.setBackground(new java.awt.Color(58,70,80));
+            menuIni.setForeground(Color.WHITE);
+            
+            menuCli.setBackground(new java.awt.Color(58,70,80));
+            menuCli.setForeground(Color.WHITE);
+            
+            menuFunc.setBackground(Color.WHITE);
+            menuFunc.setForeground(new java.awt.Color(58,70,80));
+            
+            menuEmp.setBackground(new java.awt.Color(58,70,80));
+            menuEmp.setForeground(Color.WHITE);
+            
+            menuSett.setBackground(new java.awt.Color(58,70,80));
+            menuSett.setForeground(Color.WHITE);
+            
+            menuReg.setBackground(new java.awt.Color(58,70,80));
+            menuReg.setForeground(Color.WHITE);
+            painelFuncionario();
+        }
+        if(ae.getSource()==menuEmp){
+            menuIni.setBackground(new java.awt.Color(58,70,80));
+            menuIni.setForeground(Color.WHITE);
+            
+            menuCli.setBackground(new java.awt.Color(58,70,80));
+            menuCli.setForeground(Color.WHITE);
+            
+            menuFunc.setBackground(new java.awt.Color(58,70,80));
+            menuFunc.setForeground(Color.WHITE);
+            
+            menuEmp.setBackground(Color.WHITE);
+            menuEmp.setForeground(new java.awt.Color(58,70,80));
+            
+            menuSett.setBackground(new java.awt.Color(58,70,80));
+            menuSett.setForeground(Color.WHITE);
+            
+            menuReg.setBackground(new java.awt.Color(58,70,80));
+            menuReg.setForeground(Color.WHITE);
+            painelEmprestimo();
+        }
+        if(ae.getSource() == menuReg){
+            menuIni.setBackground(new java.awt.Color(58,70,80));
+            menuIni.setForeground(Color.WHITE);
+            
+            menuCli.setBackground(new java.awt.Color(58,70,80));
+            menuCli.setForeground(Color.WHITE);
+            
+            menuFunc.setBackground(new java.awt.Color(58,70,80));
+            menuFunc.setForeground(Color.WHITE);
+            
+            menuEmp.setBackground(new java.awt.Color(58,70,80));
+            menuEmp.setForeground(Color.WHITE);
+            
+            menuSett.setBackground(new java.awt.Color(58,70,80));
+            menuSett.setForeground(Color.WHITE);
+            
+            menuReg.setBackground(Color.WHITE);
+            menuReg.setForeground(new java.awt.Color(58,70,80));
+            painelRegistro();
+        }    
+        if(ae.getSource() == menuSett){
+            menuIni.setBackground(new java.awt.Color(58,70,80));
+            menuIni.setForeground(Color.WHITE);
+            
+            menuCli.setBackground(new java.awt.Color(58,70,80));
+            menuCli.setForeground(Color.WHITE);
+            
+            menuFunc.setBackground(new java.awt.Color(58,70,80));
+            menuFunc.setForeground(Color.WHITE);
+            
+            menuEmp.setBackground(new java.awt.Color(58,70,80));
+            menuEmp.setForeground(Color.WHITE);
+            
+            menuSett.setBackground(Color.WHITE);
+            menuSett.setForeground(new java.awt.Color(58,70,80));
+            
+            menuReg.setBackground(new java.awt.Color(58,70,80));
+            menuReg.setForeground(Color.WHITE);
+            painelConfiguracoes();
+        }
         
         if(ae.getSource() == settButPerfil){
             settImagemPefil = new JFileChooser();
@@ -951,15 +1247,6 @@ public class Index extends JFrame implements ActionListener {
                 settIconPerfil.setIcon(new ImageIcon(String.valueOf(settImagemPefil.getSelectedFile()))); 
             
         }
-        
-        if(ae.getSource()==menuCli)
-            painelClientes();
-        if(ae.getSource()==menuFunc)
-            painelFuncionario();
-        if(ae.getSource()==menuEmp)
-            painelEmprestimo();
-        if(ae.getSource() == menuSett)
-            painelConfiguracoes();
         
         if(ae.getSource()==addClient){
             cl=new Cliente();
