@@ -55,7 +55,6 @@ public class Login extends JFrame implements ActionListener{
         imgLeft.setBounds(40, 15, 360, 394);
         
         
-        
         //Titlo  para os TextField
         fontTitulo = new Font("DialogInput",Font.BOLD,44);
         titulo = new JLabel();
