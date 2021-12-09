@@ -258,164 +258,6 @@ public class Index extends JFrame implements ActionListener {
         setVisible(true);
     }
     
-    public void painelConfiguracoes(){
-        central.removeAll();
-        central.revalidate();
-        central.repaint();
-        
-        setTitle("DEFINIÇÕES");
-        lblTit.setText("Configurações de Perfil");
-        
-        //Painel settings
-        //sett = new JPanel();
-        //sett.setBounds(0,0, 500, 200);
-        //sett.setBackground(Color.red);
-        //central.add(sett);
-        
-        //Fonte
-        settSub = new Font("Sans",Font.BOLD,15);
-        settNormal = new Font("DialogInput",Font.ROMAN_BASELINE,16);
-        
-        //Scroll
-        //sp = new JScrollPane();
-        
-        //Subtitulo
-        settSubTituloH = new JLabel("Detalhes de Perfil");
-        settSubTituloH.setBounds(50, 0, 300, 30);
-        settSubTituloH.setFont(settSub);
-        settNome = new JLabel("Nome");
-        settNome.setBounds(50, 50, 300, 30);
-        settNome.setFont(settNormal);
-        settApelido = new JLabel("Apelido");
-        settApelido.setBounds(50, 100, 300, 30);
-        settApelido.setFont(settNormal);
-        settAniversario = new JLabel("Data de Aniversario");
-        settAniversario.setBounds(50, 150, 300, 30);
-        settAniversario.setFont(settNormal);
-        
-        //Subtitulo
-        settSubTituloM = new JLabel("Informação de Contato");
-        settSubTituloM.setBounds(50, 220, 300, 30);
-        settSubTituloM.setFont(settSub);
-        settTelefone = new JLabel("Telefone");
-        settTelefone.setBounds(50, 270, 300, 30);
-        settTelefone.setFont(settNormal);
-        settEmail = new JLabel("Email");
-        settEmail.setBounds(50, 320, 300, 30);
-        settEmail.setFont(settNormal);
-        
-        //Subtitulo
-        settSubTituloF = new JLabel("Senha");
-        settSubTituloF.setBounds(550, 220, 300, 30);
-        settSubTituloF.setFont(settSub);
-        settSenhaAnt = new JLabel("Senha Anterior");
-        settSenhaAnt.setBounds(550, 270, 300, 30);
-        settSenhaAnt.setFont(settNormal);
-        settSenha = new JLabel("Senha Atual");
-        settSenha.setBounds(550, 320, 300, 30);
-        settSenha.setFont(settNormal);
-        settSenhaConf = new JLabel("Confirma a Senha");
-        settSenhaConf.setBounds(550, 370, 300, 30);
-        settSenhaConf.setFont(settNormal);
-         
-       //TextField
-        settTextNome = new JTextField();
-        settTextNome.setBounds(260, 50, 250, 30);
-        settTextApelido = new JTextField();
-        settTextApelido.setBounds(260, 100, 250, 30);
-        settTextAniversario = new JTextField();
-        settTextAniversario.setBounds(260, 150, 250, 30);
-        settTextTelefone = new JTextField();
-        settTextTelefone.setBounds(260, 270, 250, 30);
-        settTextEmail = new JTextField();
-        settTextEmail.setBounds(260, 320, 250, 30);
-    
-        //PasswordField
-        settTextSenha = new JPasswordField();
-        settTextSenha.setBounds(750, 320, 250, 30);
-        settTextSenhaAnt = new JPasswordField();
-        settTextSenhaAnt.setBounds(750, 270, 250, 30);
-        settTextSenhaConf = new JPasswordField();
-        settTextSenhaConf.setBounds(750, 370, 250, 30);
-        
-        
-       //Botoes
-        settButPerfil = new JButton("Upload");
-        settButPerfil.setFont(settSub);
-        settButPerfil.setBounds(775, 180, 100, 20);
-        settButPerfil.addActionListener(this);
-        settButPerfil.setBackground(new java.awt.Color(0, 223, 186));
-        settButPerfil.setBorder(null);
-        settButPerfil.setForeground(Color.white);
-        settButSave = new JButton("Salvar");
-        settButSave.setFont(settSub);
-        settButSave.setBounds(790, 460, 100, 30);
-        settButSave.addActionListener(this);
-        settButSave.setBackground(new java.awt.Color(0, 223, 186));
-        settButSave.setBorder(null);
-        settButSave.setForeground(Color.white);
-        
-        //Titulo Perfil
-        settSubTituloP = new JLabel("Foto de Perfil");
-        settSubTituloP.setBounds(770, 0, 300, 50);
-        settSubTituloP.setFont(settSub);
-        
-        // Borda Icon Perfil
-        settPaneIconPerfil = new JPanel();
-        //settPaneIconPerfil.setLayout(null);
-        settPaneIconPerfil.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        settPaneIconPerfil.setBounds(750,50,145,120);
-        
-        //Icon Perfil
-        settIconPerfil = new JLabel();
-        settIconPerfil.setIcon(new ImageIcon("Imagens2\\money.png"));
-        settPaneIconPerfil.setLayout(new GridLayout(1,1));
-        settIconPerfil.setBounds(5, 5, 145, 120);
-        settPaneIconPerfil.add(settIconPerfil);
-        
-        //Separador Meio/ Lateral em cima/ laberal em baixo
-        settM = new JSeparator(JSeparator.HORIZONTAL);
-        settM.setBounds(50, 210, 950, 5);
-        settM.setForeground(Color.black);
-        settCU = new JSeparator(JSeparator.VERTICAL);
-        settCU.setBounds(530,220,2,200);
-        settCU.setForeground(Color.black);
-        settCD = new JSeparator(JSeparator.VERTICAL);
-        settCD.setBounds(650,10,2,190);
-        settCD.setForeground(Color.black);
-       
-        
-        //central.add(sp);
-        central.add(settM);
-        central.add(settCU);
-        central.add(settCD);
-        central.add(settSubTituloP);
-        central.add(settPaneIconPerfil);
-        central.add(settButSave);
-        central.add(settButPerfil);
-        central.add(settTextNome);
-        central.add(settTextApelido);
-        central.add(settTextAniversario);
-        central.add(settTextTelefone);
-        central.add(settTextEmail);
-        central.add(settTextSenha);
-        central.add(settTextSenhaAnt);
-        central.add(settTextSenhaConf);
-        central.add(settSubTituloH);
-        central.add(settNome);
-        central.add(settApelido);
-        central.add(settAniversario);
-        central.add(settSubTituloM);
-        central.add(settTelefone);
-        central.add(settEmail);
-        central.add(settSubTituloF);
-        central.add(settSenhaAnt);
-        central.add(settSenha);
-        central.add(settSenhaConf);
-       // sp.setViewportView(area);
-        //central.add(sp);
-    }
-    
     public void painelHome(){
         central.removeAll();
         central.revalidate();
@@ -916,6 +758,163 @@ public class Index extends JFrame implements ActionListener {
         central.add(emp);
     }
     
+    public void painelConfiguracoes(){
+        central.removeAll();
+        central.revalidate();
+        central.repaint();
+        
+        setTitle("DEFINIÇÕES");
+        lblTit.setText("Configurações de Perfil");
+        
+        //Painel settings
+        //sett = new JPanel();
+        //sett.setBounds(0,0, 500, 200);
+        //sett.setBackground(Color.red);
+        //central.add(sett);
+        
+        //Fonte
+        settSub = new Font("Sans",Font.BOLD,15);
+        settNormal = new Font("DialogInput",Font.ROMAN_BASELINE,16);
+        
+        //Scroll
+        //sp = new JScrollPane();
+        
+        //Subtitulo
+        settSubTituloH = new JLabel("Detalhes de Perfil");
+        settSubTituloH.setBounds(50, 0, 300, 30);
+        settSubTituloH.setFont(settSub);
+        settNome = new JLabel("Nome");
+        settNome.setBounds(50, 50, 300, 30);
+        settNome.setFont(settNormal);
+        settApelido = new JLabel("Apelido");
+        settApelido.setBounds(50, 100, 300, 30);
+        settApelido.setFont(settNormal);
+        settAniversario = new JLabel("Data de Aniversario");
+        settAniversario.setBounds(50, 150, 300, 30);
+        settAniversario.setFont(settNormal);
+        
+        //Subtitulo
+        settSubTituloM = new JLabel("Informação de Contato");
+        settSubTituloM.setBounds(50, 220, 300, 30);
+        settSubTituloM.setFont(settSub);
+        settTelefone = new JLabel("Telefone");
+        settTelefone.setBounds(50, 270, 300, 30);
+        settTelefone.setFont(settNormal);
+        settEmail = new JLabel("Email");
+        settEmail.setBounds(50, 320, 300, 30);
+        settEmail.setFont(settNormal);
+        
+        //Subtitulo
+        settSubTituloF = new JLabel("Senha");
+        settSubTituloF.setBounds(550, 220, 300, 30);
+        settSubTituloF.setFont(settSub);
+        settSenhaAnt = new JLabel("Senha Anterior");
+        settSenhaAnt.setBounds(550, 270, 300, 30);
+        settSenhaAnt.setFont(settNormal);
+        settSenha = new JLabel("Senha Atual");
+        settSenha.setBounds(550, 320, 300, 30);
+        settSenha.setFont(settNormal);
+        settSenhaConf = new JLabel("Confirma a Senha");
+        settSenhaConf.setBounds(550, 370, 300, 30);
+        settSenhaConf.setFont(settNormal);
+         
+       //TextField
+        settTextNome = new JTextField();
+        settTextNome.setBounds(260, 50, 250, 30);
+        settTextApelido = new JTextField();
+        settTextApelido.setBounds(260, 100, 250, 30);
+        settTextAniversario = new JTextField();
+        settTextAniversario.setBounds(260, 150, 250, 30);
+        settTextTelefone = new JTextField();
+        settTextTelefone.setBounds(260, 270, 250, 30);
+        settTextEmail = new JTextField();
+        settTextEmail.setBounds(260, 320, 250, 30);
+    
+        //PasswordField
+        settTextSenha = new JPasswordField();
+        settTextSenha.setBounds(750, 320, 250, 30);
+        settTextSenhaAnt = new JPasswordField();
+        settTextSenhaAnt.setBounds(750, 270, 250, 30);
+        settTextSenhaConf = new JPasswordField();
+        settTextSenhaConf.setBounds(750, 370, 250, 30);
+        
+        
+       //Botoes
+        settButPerfil = new JButton("Upload");
+        settButPerfil.setFont(settSub);
+        settButPerfil.setBounds(775, 180, 100, 20);
+        settButPerfil.addActionListener(this);
+        settButPerfil.setBackground(new java.awt.Color(0, 223, 186));
+        settButPerfil.setBorder(null);
+        settButPerfil.setForeground(Color.white);
+        settButSave = new JButton("Salvar");
+        settButSave.setFont(settSub);
+        settButSave.setBounds(790, 460, 100, 30);
+        settButSave.addActionListener(this);
+        settButSave.setBackground(new java.awt.Color(0, 223, 186));
+        settButSave.setBorder(null);
+        settButSave.setForeground(Color.white);
+        
+        //Titulo Perfil
+        settSubTituloP = new JLabel("Foto de Perfil");
+        settSubTituloP.setBounds(770, 0, 300, 50);
+        settSubTituloP.setFont(settSub);
+        
+        // Borda Icon Perfil
+        settPaneIconPerfil = new JPanel();
+        //settPaneIconPerfil.setLayout(null);
+        settPaneIconPerfil.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        settPaneIconPerfil.setBounds(750,50,145,120);
+        
+        //Icon Perfil
+        settIconPerfil = new JLabel();
+        settIconPerfil.setIcon(new ImageIcon("Imagens2\\money.png"));
+        settPaneIconPerfil.setLayout(new GridLayout(1,1));
+        settIconPerfil.setBounds(5, 5, 145, 120);
+        settPaneIconPerfil.add(settIconPerfil);
+        
+        //Separador Meio/ Lateral em cima/ laberal em baixo
+        settM = new JSeparator(JSeparator.HORIZONTAL);
+        settM.setBounds(50, 210, 950, 5);
+        settM.setForeground(Color.black);
+        settCU = new JSeparator(JSeparator.VERTICAL);
+        settCU.setBounds(530,220,2,200);
+        settCU.setForeground(Color.black);
+        settCD = new JSeparator(JSeparator.VERTICAL);
+        settCD.setBounds(650,10,2,190);
+        settCD.setForeground(Color.black);
+       
+        
+        //central.add(sp);
+        central.add(settM);
+        central.add(settCU);
+        central.add(settCD);
+        central.add(settSubTituloP);
+        central.add(settPaneIconPerfil);
+        central.add(settButSave);
+        central.add(settButPerfil);
+        central.add(settTextNome);
+        central.add(settTextApelido);
+        central.add(settTextAniversario);
+        central.add(settTextTelefone);
+        central.add(settTextEmail);
+        central.add(settTextSenha);
+        central.add(settTextSenhaAnt);
+        central.add(settTextSenhaConf);
+        central.add(settSubTituloH);
+        central.add(settNome);
+        central.add(settApelido);
+        central.add(settAniversario);
+        central.add(settSubTituloM);
+        central.add(settTelefone);
+        central.add(settEmail);
+        central.add(settSubTituloF);
+        central.add(settSenhaAnt);
+        central.add(settSenha);
+        central.add(settSenhaConf);
+       // sp.setViewportView(area);
+        //central.add(sp);
+    }
     
     
     public void readClientes(){ 
@@ -946,7 +945,7 @@ public class Index extends JFrame implements ActionListener {
         if(ae.getSource() == settButPerfil){
             settImagemPefil = new JFileChooser();
             settImagemPefil.setCurrentDirectory(new File("user.dir"));
-            settImagemPefil.addChoosableFileFilter(new FileNameExtensionFilter("All pic", "jpeg","png","jpg","gif"));
+            settImagemPefil.addChoosableFileFilter(new FileNameExtensionFilter("jpeg","png","jpg","gif"));
             
             if(settImagemPefil.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
                 settIconPerfil.setIcon(new ImageIcon(String.valueOf(settImagemPefil.getSelectedFile()))); 
