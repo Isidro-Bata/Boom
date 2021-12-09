@@ -892,15 +892,15 @@ public class Index extends JFrame implements ActionListener {
         
         //Tabela
         paneCircularHome = new JPanel();
-        paneCircularHome.setBounds(50,220,600,290);
+        paneCircularHome.setBounds(50,220,740,290);
         paneCircularHome.setLayout(new BorderLayout());
      
-        String [] nomeColunas = {"Nome", "Apelido", "Emprestimo", "Liquidado","Parcelamento", "Data"};
-        Object [][]info = {{"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "09/01/2022"},
-                           {"Isidro", "Bata", "1,000,000.00", "40,000.00", "10,000.00", "19/04/2022"},
-                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "15/06/2022"},
-                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "20/08/2022"},
-                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "01/10/2022"},
+        String [] nomeColunas = {"Nome", "Apelido", "Emprestimo", "Liquidado","Parcelamento", "Operador", "Data"};
+        Object [][]info = {{"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "Nazrio Zandamela", "09/01/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "40,000.00", "10,000.00", "Anisio Djedje", "19/04/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "Clifton Fernandes", "15/06/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "Elon Mask", "20/08/2022"},
+                           {"Isidro", "Bata", "1,000,000.00", "20,000.00", "10,000.00", "Bill Gates", "01/10/2022"},
                           };
         
         tabela = new JTable(info, nomeColunas);
@@ -911,7 +911,7 @@ public class Index extends JFrame implements ActionListener {
         
         //Painel Grafico de barras
         paneBarrasHome = new JPanel();
-        paneBarrasHome.setBounds(650,220,400,290);
+        paneBarrasHome.setBounds(790,220,290,280);
         paneBarrasHome.setLayout(new BorderLayout());
         paneBarrasHome.setBackground(new java.awt.Color(147,147,147));
         dadosGraficoBarra = new DefaultCategoryDataset();
